@@ -244,13 +244,7 @@ def calculate_ate(Y: np.ndarray, T: np.ndarray) -> float:
     Y_1_mean = np.mean(Y[T == exp], axis=0)
     Y_0_mean = np.mean(Y[T == base], axis=0)
     ate = Y_1_mean - Y_0_mean
-    print("valid ate: ", ate)
-    if exp == 1:
-        ate = 0.009
-        return ate
-    else:
-        ate = -0.014
-        return ate
+    return ate
 
 def calculate_pred_ate(model1, model0, seq_model, X: np.ndarray, X_sparse: np.ndarray, X_seq: np.ndarray, S: np.ndarray, T: np.ndarray, R: np.ndarray, Y: np.ndarray, Sbase: np.ndarray, device) -> float:
     X = torch.tensor(X, dtype=torch.float32).to(device)
